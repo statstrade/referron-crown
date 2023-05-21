@@ -22,8 +22,8 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const Token = await ethers.getContractFactory("Token");
-  const token = await Token.deploy();
+  const ReferronCrown = await ethers.getContractFactory("ReferronCrown");
+  const token = await ReferronCrown.deploy();
   await token.deployed();
 
   console.log("Token address:", token.address);
@@ -42,14 +42,14 @@ function saveFrontendFiles(token) {
 
   fs.writeFileSync(
     path.join(contractsDir, "contract-address.json"),
-    JSON.stringify({ Token: token.address }, undefined, 2)
+    JSON.stringify({ ReferronCrown: token.address }, undefined, 2)
   );
 
-  const TokenArtifact = artifacts.readArtifactSync("Token");
+  const ReferronCrownArtifact = artifacts.readArtifactSync("ReferronCrown");
 
   fs.writeFileSync(
-    path.join(contractsDir, "Token.json"),
-    JSON.stringify(TokenArtifact, null, 2)
+    path.join(contractsDir, "ReferronCrown.json"),
+    JSON.stringify(ReferronCrownArtifact, null, 2)
   );
 }
 
